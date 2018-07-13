@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>peanut-aop</artifactId>
-    <packaging>pom</packaging>
-
+    <artifactId>peanut-orm</artifactId>
 
 
 </project>

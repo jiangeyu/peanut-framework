@@ -13,6 +13,7 @@
         <module>peanut-aop</module>
         <module>peanut-mvc</module>
         <module>peanut-core</module>
+        <module>peanut-orm</module>
     </modules>
 
 
