@@ -7,5 +7,5 @@ package proxy;
  */
 public interface Proxy {
 
-    Object doProxy();
+    Object doProxy(ProxyChain chain) throws Throwable;
 }
