@@ -16,5 +16,17 @@
         <module>peanut-orm</module>
     </modules>
 
+    <properties>
+        <projectlombok.version>1.16.18</projectlombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${projectlombok.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

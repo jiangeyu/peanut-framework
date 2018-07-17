@@ -12,6 +12,22 @@
     <artifactId>peanut-aop</artifactId>
     <packaging>pom</packaging>
 
+    <properties>
+        <cglib.version>3.1</cglib.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>${cglib.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${projectlombok.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -7,5 +7,12 @@ package proxy;
  */
 public interface Proxy {
 
+    /**
+     * 执行链式代理
+     *
+     * @param chain
+     * @return
+     * @throws Throwable
+     */
     Object doProxy(ProxyChain chain) throws Throwable;
 }
