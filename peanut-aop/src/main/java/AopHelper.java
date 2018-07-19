@@ -4,4 +4,6 @@
  * @desc 初始化aop框架
  */
 public class AopHelper {
+
+//    private static final ClassScanner classScanner = Inst
 }
