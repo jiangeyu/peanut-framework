@@ -1,4 +1,4 @@
-package proxy;
+package com.peanut.framework.proxy;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>

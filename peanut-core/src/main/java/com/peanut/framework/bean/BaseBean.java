@@ -1,4 +1,4 @@
-package bean;
+package com.peanut.framework.bean;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

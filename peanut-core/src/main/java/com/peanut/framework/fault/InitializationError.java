@@ -1,4 +1,4 @@
-package fault;
+package com.peanut.framework.fault;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>

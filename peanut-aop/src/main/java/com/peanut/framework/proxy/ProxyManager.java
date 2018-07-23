@@ -1,4 +1,4 @@
-package proxy;
+package com.peanut.framework.proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

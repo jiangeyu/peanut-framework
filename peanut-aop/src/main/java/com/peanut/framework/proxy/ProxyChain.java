@@ -1,4 +1,4 @@
-package proxy;
+package com.peanut.framework.proxy;
 
 import lombok.Getter;
 import net.sf.cglib.proxy.MethodProxy;

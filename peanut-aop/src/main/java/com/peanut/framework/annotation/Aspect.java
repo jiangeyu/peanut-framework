@@ -1,4 +1,4 @@
-package annotation;
+package com.peanut.framework.annotation;
 
 import java.lang.annotation.*;
 
