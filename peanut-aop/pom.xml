@@ -12,9 +12,6 @@
     <artifactId>peanut-aop</artifactId>
     <packaging>pom</packaging>
 
-    <properties>
-        <cglib.version>3.1</cglib.version>
-    </properties>
 
     <dependencies>
         <dependency>
