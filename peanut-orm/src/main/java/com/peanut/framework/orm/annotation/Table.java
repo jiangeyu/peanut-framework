@@ -1,4 +1,4 @@
-package com.peanut.framework.dao.orm.annotation;
+package com.peanut.framework.orm.annotation;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
