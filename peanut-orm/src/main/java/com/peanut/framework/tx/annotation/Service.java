@@ -1,4 +1,4 @@
-package com.peanut.framework.tx;
+package com.peanut.framework.tx.annotation;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
