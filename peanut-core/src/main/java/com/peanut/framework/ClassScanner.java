@@ -10,10 +10,27 @@ import java.util.List;
  */
 public interface ClassScanner {
 
+    /**
+     * 获取指定包名中的所有类
+     * @param packageName
+     * @return
+     */
     List<Class<?>> getClassList(String packageName);
 
+    /**
+     * 获取指定包名中指定注解的相关类
+     * @param packageName
+     * @param annotationClass
+     * @return
+     */
     List<Class<?>> getClassListByAnnotation(String packageName, Class<? extends Annotation> annotationClass);
 
+    /**
+     * 获取指定包名中父类或接口的相关类
+     * @param packageName
+     * @param superClass
+     * @return
+     */
     List<Class<?>> getClassBySuper(String packageName, Class<?> superClass);
 
 }

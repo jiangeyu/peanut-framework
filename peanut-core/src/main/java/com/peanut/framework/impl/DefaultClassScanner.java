@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 下午11:27 2018/7/23
- * @desc
+ * @desc 默认类扫描器
  */
 public class DefaultClassScanner implements ClassScanner {
 
