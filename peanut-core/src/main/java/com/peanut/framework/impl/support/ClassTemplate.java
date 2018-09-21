@@ -3,6 +3,9 @@ package com.peanut.framework.impl.support;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
@@ -17,6 +20,11 @@ public abstract class ClassTemplate {
 
     public ClassTemplate(String packageName) {
         this.packageName = packageName;
+    }
+
+    public final List<Class<?>> getClassList() {
+        List<Class<?>> classList = new ArrayList<Class<?>>();
+        return classList;
     }
 
 
