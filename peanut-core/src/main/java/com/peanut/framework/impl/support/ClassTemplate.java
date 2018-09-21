@@ -3,7 +3,9 @@ package com.peanut.framework.impl.support;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 
@@ -24,7 +26,17 @@ public abstract class ClassTemplate {
 
     public final List<Class<?>> getClassList() {
         List<Class<?>> classList = new ArrayList<Class<?>>();
+        try {
+            Enumeration<URL> urls;
+
+        } catch (Exception e) {
+            logger.error("获取类出错! ", e);
+        }
         return classList;
+    }
+
+    private void addClass(List<Class<?>> classList, String packagePath, String packageName) {
+
     }
 
 
