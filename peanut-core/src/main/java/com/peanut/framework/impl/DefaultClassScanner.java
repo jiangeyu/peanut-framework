@@ -1,6 +1,9 @@
 package com.peanut.framework.impl;
 
 import com.peanut.framework.ClassScanner;
+import com.peanut.framework.impl.support.AnnotationClassTmplate;
+import com.peanut.framework.impl.support.ClassTemplate;
+import com.peanut.framework.impl.support.SuperClassTemplate;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -13,14 +16,33 @@ import java.util.List;
 public class DefaultClassScanner implements ClassScanner {
 
     public List<Class<?>> getClassList(String packageName) {
-        return null;
+        return new ClassTemplate(packageName) {
+            @Override
+            public boolean checkAddClass(Class<?> cls) {
+                String className = cls.getName();
+                String pkgName = className.substring(0, className.lastIndexOf("."));
+
+                return pkgName.startsWith(packageName);
+            }
+        }.getClassList();
     }
 
     public List<Class<?>> getClassListByAnnotation(String packageName, Class<? extends Annotation> annotationClass) {
-        return null;
+        return new AnnotationClassTmplate(packageName, annotationClass) {
+
+            @Override
+            public boolean checkAddClass(Class<?> cls) {
+                return cls.isAnnotationPresent(annotationClass);
+            }
+        }.getClassList();
     }
 
     public List<Class<?>> getClassBySuper(String packageName, Class<?> superClass) {
-        return null;
+        return new SuperClassTemplate(packageName, superClass) {
+            @Override
+            public boolean checkAddClass(Class<?> cls) {
+                return superClass.isAssignableFrom(cls) && !superClass.equals(superClass);
+            }
+        }.getClassList();
     }
 }
