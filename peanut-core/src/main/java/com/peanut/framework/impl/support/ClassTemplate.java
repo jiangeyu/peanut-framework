@@ -90,6 +90,10 @@ public abstract class ClassTemplate {
                     if (StringUtils.isNotEmpty(packageName)) {
                         subPackageName = packageName + "." + subPackageName;
                     }
+
+                    /**
+                     * 递归调用
+                     */
                     addClass(classList, subPackagePath, subPackageName);
                 }
             }
