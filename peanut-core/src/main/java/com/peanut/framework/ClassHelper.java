@@ -6,4 +6,6 @@ package com.peanut.framework;
  * @desc  根据条件获取相关类
  */
 public class ClassHelper {
+
+    private static final String basePackage ="";
 }

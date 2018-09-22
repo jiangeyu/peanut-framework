@@ -21,7 +21,7 @@ public class BeanHelper {
     }
 
     public static <T> T getBean(Class<T> tClass) {
-        if(!beanMap.containsKey(tClass)) {
+        if (!beanMap.containsKey(tClass)) {
             throw new RuntimeException("无法根据类名获取实例! " + tClass);
         }
         return (T) beanMap.get(tClass);
