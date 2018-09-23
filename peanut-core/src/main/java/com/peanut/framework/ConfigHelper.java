@@ -11,5 +11,9 @@ import java.util.Properties;
  */
 public class ConfigHelper {
 
-    private static final Properties configProps = PropsUtil.loadProps("");
+    private static final Properties configProps = PropsUtil.loadProps(FrameworkConstant.CONFIG_PROPS);
+
+    public static String getString(String key) {
+        return "";
+    }
 }
