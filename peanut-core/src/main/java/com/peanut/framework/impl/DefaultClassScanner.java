@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class DefaultClassScanner implements ClassScanner {
 
+    @Override
     public List<Class<?>> getClassList(String packageName) {
         return new ClassTemplate(packageName) {
             @Override
@@ -27,6 +28,7 @@ public class DefaultClassScanner implements ClassScanner {
         }.getClassList();
     }
 
+    @Override
     public List<Class<?>> getClassListByAnnotation(String packageName, Class<? extends Annotation> annotationClass) {
         return new AnnotationClassTmplate(packageName, annotationClass) {
 
@@ -37,6 +39,7 @@ public class DefaultClassScanner implements ClassScanner {
         }.getClassList();
     }
 
+    @Override
     public List<Class<?>> getClassBySuper(String packageName, Class<?> superClass) {
         return new SuperClassTemplate(packageName, superClass) {
             @Override
