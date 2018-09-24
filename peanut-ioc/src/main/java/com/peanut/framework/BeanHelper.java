@@ -1,6 +1,9 @@
 package com.peanut.framework;
 
+import com.peanut.framework.annotation.Bean;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,12 +15,22 @@ public class BeanHelper {
 
     private static final Map<Class<?>, Object> beanMap = new HashMap<Class<?>, Object>(16);
 
-    public static Map<Class<?>, Object> getBeanMap() {
-        return beanMap;
-    }
 
     static {
+        List<Class<?>> classList = ClassHelper.getClassList();
+        classList.stream().filter(cls -> cls.isAnnotationPresent(Bean.class)).forEach(clazz -> {
+            try {
+                beanMap.putIfAbsent(clazz, clazz.newInstance());
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
+    public static Map<Class<?>, Object> getBeanMap() {
+        return beanMap;
     }
 
     public static <T> T getBean(Class<T> tClass) {
