@@ -1,5 +1,7 @@
 package com.peanut.framework;
 
+import com.peanut.framework.util.StringUtil;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,7 +18,10 @@ public class InstanceFactory {
         if(cacheKey.contains(cacheKey)) {
             return (T) cache.get(cacheKey);
         }
-//        String implClassName = ConfigH
+        String implClassName = ConfigHelper.getString(cacheKey);
+        if(StringUtil.isNotEmpty(implClassName)) {
+            implClassName = defaultImplClass.getName();
+        }
         T instance = null;
         return instance;
     }
