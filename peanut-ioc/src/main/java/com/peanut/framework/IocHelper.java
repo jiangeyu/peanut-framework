@@ -48,7 +48,7 @@ public class IocHelper {
                 }
             });
         } catch (Exception e) {
-            throw new InitializationError("初始化 Iochelper 出错！", e);
+            throw new InitializationError("初始化 IocHelper 出错！", e);
         }
 
     }
