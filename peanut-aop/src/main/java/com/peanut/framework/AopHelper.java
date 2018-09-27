@@ -7,7 +7,10 @@ import com.peanut.framework.proxy.Proxy;
 import com.peanut.framework.proxy.ProxyManager;
 import com.peanut.framework.tx.TransactionProxy;
 import com.peanut.framework.tx.annotation.Service;
+import com.peanut.framework.util.ClassUtil;
+import com.peanut.framework.util.StringUtil;
 
+import java.lang.annotation.Annotation;
 import java.util.*;
 
 /**
@@ -90,12 +93,48 @@ public class AopHelper {
     }
 
     private static List<Class<?>> createTargetClassList(Aspect aspect) {
-        List<Class<?>> list = new ArrayList<>();
-        return list;
+        List<Class<?>> targetClassList = new ArrayList<>();
+        String pkg = aspect.pkg();
+        String cls = aspect.cls();
+        Class<? extends Annotation> annotation = aspect.annotion();
+        if (StringUtil.isNotEmpty(pkg)) {
+            if (StringUtil.isNotEmpty(cls)) {
+                targetClassList.add(ClassUtil.loadClass(pkg + "." + cls, false));
+            } else {
+                if (annotation != null && !annotation.equals(Aspect.class)) {
+                    targetClassList.addAll(classScanner.getClassListByAnnotation(pkg, annotation));
+                } else {
+                    targetClassList.addAll(classScanner.getClassList(pkg));
+                }
+            }
+        } else {
+            if (annotation != null && !annotation.equals(Aspect.class)) {
+                targetClassList.addAll(ClassHelper.getClassListByAnnotation(annotation));
+            }
+        }
+        return targetClassList;
     }
 
     private static Map<Class<?>, List<Proxy>> createTargetMap(Map<Class<?>, List<Class<?>>> proxyMap) {
         Map<Class<?>, List<Proxy>> targetMap = new HashMap<>(1024);
+        proxyMap.entrySet().stream().forEach(entry -> {
+            Class<?> proxyClass = entry.getKey();
+            List<Class<?>> targetClassList = entry.getValue();
+            targetClassList.stream().forEach(targetClass -> {
+                try {
+                    Proxy proxy = (Proxy) proxyClass.newInstance();
+                    if (targetMap.containsKey(targetClass)) {
+                        targetMap.get(targetClass).add(proxy);
+                    } else {
+                        List<Proxy> baseAspectList = new ArrayList<>();
+                        baseAspectList.add(proxy);
+                        targetMap.put(targetClass, baseAspectList);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        });
         return targetMap;
     }
 

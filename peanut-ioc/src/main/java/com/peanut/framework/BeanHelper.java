@@ -1,6 +1,8 @@
 package com.peanut.framework;
 
+import com.peanut.framework.annotation.Aspect;
 import com.peanut.framework.annotation.Bean;
+import com.peanut.framework.tx.annotation.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +20,11 @@ public class BeanHelper {
 
     static {
         List<Class<?>> classList = ClassHelper.getClassList();
-        classList.stream().filter(cls -> cls.isAnnotationPresent(Bean.class)).forEach(clazz -> {
+        classList.stream()
+                .filter(cls -> cls.isAnnotationPresent(Bean.class)
+                            || cls.isAnnotationPresent(Service.class)
+                            || cls.isAnnotationPresent(Aspect.class))
+                .forEach(clazz -> {
             try {
                 beanMap.putIfAbsent(clazz, clazz.newInstance());
             } catch (InstantiationException e) {
