@@ -2,7 +2,11 @@ package com.peanut.framework;
 
 import com.peanut.framework.annotation.Aspect;
 import com.peanut.framework.annotation.AspectOrder;
+import com.peanut.framework.fault.InitializationError;
 import com.peanut.framework.proxy.Proxy;
+import com.peanut.framework.proxy.ProxyManager;
+import com.peanut.framework.tx.TransactionProxy;
+import com.peanut.framework.tx.annotation.Service;
 
 import java.util.*;
 
@@ -14,6 +18,22 @@ import java.util.*;
 public class AopHelper {
 
     private static final ClassScanner classScanner = InstanceFactory.getClassScanner();
+
+    static {
+        try {
+            Map<Class<?>, List<Class<?>>> proxyMap = createProxyMap();
+            Map<Class<?>, List<Proxy>> targetMap = createTargetMap(proxyMap);
+            targetMap.entrySet().stream()
+                    .forEach(entry -> {
+                        Class<?> targetClass = entry.getKey();
+                        List<Proxy> proxyList = entry.getValue();
+                        Object proxyInstance = ProxyManager.createProxy(targetClass, proxyList);
+                        BeanHelper.setBean(targetClass, proxyInstance);
+                    });
+        } catch (Exception e) {
+            throw new InitializationError("初始化AOPHelper出错", e);
+        }
+    }
 
 
     private static Map<Class<?>, List<Class<?>>> createProxyMap() throws Exception {
@@ -32,10 +52,21 @@ public class AopHelper {
     private static void addAspectProxy(Map<Class<?>, List<Class<?>>> proxyMap) {
         List<Class<?>> aspectProxyClassList = ClassHelper.getClassListBySuper(AspectProxy.class);
         aspectProxyClassList.addAll(classScanner.getClassBySuper(FrameworkConstant.PLUGIN_PACKAGE, AspectProxy.class));
+        sortAspectProxyClassList(aspectProxyClassList);
+
+        aspectProxyClassList.stream()
+                .filter(aspectProxyClass -> aspectProxyClass.isAnnotationPresent(Aspect.class))
+                .forEach(proxyClass -> {
+                    Aspect aspect = proxyClass.getAnnotation(Aspect.class);
+                    List<Class<?>> targetClassList = createTargetClassList(aspect);
+                    proxyMap.putIfAbsent(proxyClass, targetClassList);
+                });
 
     }
 
     private static void addTransactionProxy(Map<Class<?>, List<Class<?>>> proxyMap) {
+        List<Class<?>> serviceClassList = ClassHelper.getClassListByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class, serviceClassList);
 
     }
 
