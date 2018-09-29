@@ -18,6 +18,7 @@ public abstract class AbstractDataSourceFactory<T extends DataSource> implements
     protected final String password = ConfigHelper.getString("com.github.jdbc.password");
 
 
+    @Override
     public final T getDataSource() {
         T ds = createDataSource();
         setDriver(ds, driver);

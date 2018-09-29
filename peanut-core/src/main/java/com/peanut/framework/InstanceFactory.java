@@ -1,5 +1,9 @@
 package com.peanut.framework;
 
+import com.peanut.framework.dao.DataAccessor;
+import com.peanut.framework.dao.impl.DefaultDataAccessor;
+import com.peanut.framework.ds.DataSourceFactory;
+import com.peanut.framework.ds.impl.DefaultDataSourceFactory;
 import com.peanut.framework.impl.DefaultClassScanner;
 import com.peanut.framework.util.ObjectUtil;
 import com.peanut.framework.util.StringUtil;
@@ -58,20 +62,20 @@ public class InstanceFactory {
         return getInstance(CLASS_SCANNER, DefaultClassScanner.class);
     }
 
-//    /**
-//     * 获取 DataSourceFactory
-//     */
-//    public static DataSourceFactory getDataSourceFactory() {
-//        return getInstance(DS_FACTORY, DefaultDataSourceFactory.class);
-//    }
-//
-//    /**
-//     * 获取 DataAccessor
-//     */
-//    public static DataAccessor getDataAccessor() {
-//        return getInstance(DATA_ACCESSOR, DefaultDataAccessor.class);
-//    }
-//
+    /**
+     * 获取 DataSourceFactory
+     */
+    public static DataSourceFactory getDataSourceFactory() {
+        return getInstance(DS_FACTORY, DefaultDataSourceFactory.class);
+    }
+
+    /**
+     * 获取 DataAccessor
+     */
+    public static DataAccessor getDataAccessor() {
+        return getInstance(DATA_ACCESSOR, DefaultDataAccessor.class);
+    }
+
 //    /**
 //     * 获取 HandlerMapping
 //     */
