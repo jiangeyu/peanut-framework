@@ -16,4 +16,7 @@ public interface FrameworkConstant {
 
     String JSP_PATH ="";
 
+
+    String PK_NAME = "id";
+
 }
