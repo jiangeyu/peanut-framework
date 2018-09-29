@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public interface DataAccessor {
 
-    <T> T queryEntity(Class<?> entityClass, String sql, Object... params);
+    <T> T queryEntity(Class<T> entityClass, String sql, Object... params);
 
     <T> List<T> queryEntityList(Class<T> entityClass, String sql, Object... params);
 
@@ -29,7 +29,7 @@ public interface DataAccessor {
 
     <T> List<T> queryColumnList(String sql, Object... params);
 
-    <T> Map<T, Map<String, String>> queryColumnMap(String column, String sql, Object... params);
+    <T> Map<T, Map<String, Object>> queryColumnMap(String column, String sql, Object... params);
 
     long queryCount(String sql, Object... params);
 
