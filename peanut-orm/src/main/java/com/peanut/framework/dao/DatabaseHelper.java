@@ -35,7 +35,7 @@ public class DatabaseHelper {
         return dataSourceFactory.getDataSource();
     }
 
-    public static Connection getCoonection() {
+    public static Connection getConnection() {
         Connection connection;
         try {
             connection = connContainer.get();
@@ -53,7 +53,7 @@ public class DatabaseHelper {
     }
 
     public static void startTransaction() {
-        Connection connection = getCoonection();
+        Connection connection = getConnection();
         if(connection != null) {
             try {
                connection.setAutoCommit(false);
@@ -68,7 +68,7 @@ public class DatabaseHelper {
     }
 
     public static void commitTransaction() {
-        Connection connection = getCoonection();
+        Connection connection = getConnection();
         try {
             connection.commit();
         } catch (SQLException exception) {
@@ -80,7 +80,7 @@ public class DatabaseHelper {
     }
 
     public static void roolbackTransction() {
-        Connection connection = getCoonection();
+        Connection connection = getConnection();
         try {
             connection.rollback();
         } catch (SQLException exception) {
