@@ -4,7 +4,9 @@ import com.peanut.framework.dao.DataAccessor;
 import com.peanut.framework.dao.impl.DefaultDataAccessor;
 import com.peanut.framework.ds.DataSourceFactory;
 import com.peanut.framework.ds.impl.DefaultDataSourceFactory;
+import com.peanut.framework.impl.DafaultHandlerMapping;
 import com.peanut.framework.impl.DefaultClassScanner;
+import com.peanut.framework.impl.DefaultHandlerInvoker;
 import com.peanut.framework.util.ObjectUtil;
 import com.peanut.framework.util.StringUtil;
 
@@ -76,20 +78,20 @@ public class InstanceFactory {
         return getInstance(DATA_ACCESSOR, DefaultDataAccessor.class);
     }
 
-//    /**
-//     * 获取 HandlerMapping
-//     */
-//    public static HandlerMapping getHandlerMapping() {
-//        return getInstance(HANDLER_MAPPING, DefaultHandlerMapping.class);
-//    }
-//
-//    /**
-//     * 获取 HandlerInvoker
-//     */
-//    public static HandlerInvoker getHandlerInvoker() {
-//        return getInstance(HANDLER_INVOKER, DefaultHandlerInvoker.class);
-//    }
-//
+    /**
+     * 获取 HandlerMapping
+     */
+    public static HandlerMapping getHandlerMapping() {
+        return getInstance(HANDLER_MAPPING, DafaultHandlerMapping.class);
+    }
+
+    /**
+     * 获取 HandlerInvoker
+     */
+    public static HandlerInvoker getHandlerInvoker() {
+        return getInstance(HANDLER_INVOKER, DefaultHandlerInvoker.class);
+    }
+
 //    /**
 //     * 获取 HandlerExceptionResolver
 //     */

@@ -5,10 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
- * @time: Created in 下午11:22 2018/7/25
+ * @time: Created in 下午5:24 2018/9/30
  * @desc
  */
-public interface ViewResolver {
+public interface HandlerInvoker {
 
-    void resolveView(HttpServletRequest request, HttpServletResponse response, Object actionMethodResult);
+    void invokeHandler(HttpServletRequest request, HttpServletResponse response, Handler handler) throws Exception;
 }
