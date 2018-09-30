@@ -4,9 +4,7 @@ import com.peanut.framework.dao.DataAccessor;
 import com.peanut.framework.dao.impl.DefaultDataAccessor;
 import com.peanut.framework.ds.DataSourceFactory;
 import com.peanut.framework.ds.impl.DefaultDataSourceFactory;
-import com.peanut.framework.impl.DafaultHandlerMapping;
-import com.peanut.framework.impl.DefaultClassScanner;
-import com.peanut.framework.impl.DefaultHandlerInvoker;
+import com.peanut.framework.impl.*;
 import com.peanut.framework.util.ObjectUtil;
 import com.peanut.framework.util.StringUtil;
 
@@ -92,19 +90,19 @@ public class InstanceFactory {
         return getInstance(HANDLER_INVOKER, DefaultHandlerInvoker.class);
     }
 
-//    /**
-//     * 获取 HandlerExceptionResolver
-//     */
-//    public static HandlerExceptionResolver getHandlerExceptionResolver() {
-//        return getInstance(HANDLER_EXCEPTION_RESOLVER, DefaultHandlerExceptionResolver.class);
-//    }
-//
-//    /**
-//     * 获取 ViewResolver
-//     */
-//    public static ViewResolver getViewResolver() {
-//        return getInstance(VIEW_RESOLVER, DefaultViewResolver.class);
-//    }
+    /**
+     * 获取 HandlerExceptionResolver
+     */
+    public static HandlerExceptionResolver getHandlerExceptionResolver() {
+        return getInstance(HANDLER_EXCEPTION_RESOLVER, DefaultHandlerExceptionResolver.class);
+    }
+
+    /**
+     * 获取 ViewResolver
+     */
+    public static ViewResolver getViewResolver() {
+        return getInstance(VIEW_RESOLVER, DefaultViewResolver.class);
+    }
 
     public static <T> T getInstance(String cacheKey, Class<T> defaultImplClass) {
         if (cacheKey.contains(cacheKey)) {
