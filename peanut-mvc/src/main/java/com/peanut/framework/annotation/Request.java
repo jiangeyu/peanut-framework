@@ -14,43 +14,41 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Request {
 
+
     /**
      * 定义GET请求
-     *
      */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface Get {
-        String value();
+        String value() default "GET";
     }
 
     /**
      * 定义POST请求
-     *
      */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface Post {
-        String value();
+        String value() default "POST";
     }
 
     /**
      * 定义PUT请求
-     *
      */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface Put {
-        String value();
+        String value() default "PUT";
     }
 
     /**
      * 定义DELETE请求
-     *
      */
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     @interface Delete {
-        String value();
+        String value() default "DELETE";
     }
+
 }

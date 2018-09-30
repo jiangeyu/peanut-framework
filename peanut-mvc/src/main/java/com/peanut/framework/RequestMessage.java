@@ -10,9 +10,14 @@ import lombok.Data;
  */
 @Builder
 @Data
-public class Request {
+public class RequestMessage {
 
     private String requestMethod;
 
     private String requestPath;
+
+    public RequestMessage(String requestMethod, String requestPath) {
+        this.requestMethod = requestMethod;
+        this.requestPath = requestPath;
+    }
 }

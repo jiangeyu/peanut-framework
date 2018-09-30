@@ -21,5 +21,8 @@ public class Handler {
 
     private Matcher requestPathMatcher;
 
-
+    public Handler(Class<?> actionClass, Method actionMethod) {
+        this.actionClass = actionClass;
+        this.actionMethod = actionMethod;
+    }
 }
