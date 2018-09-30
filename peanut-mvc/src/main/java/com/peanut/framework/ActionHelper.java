@@ -2,13 +2,12 @@ package com.peanut.framework;
 
 import com.peanut.framework.annotation.Action;
 import com.peanut.framework.annotation.Request;
+import com.peanut.framework.util.ArrayUtil;
 import com.peanut.framework.util.CollectionUtil;
 import com.peanut.framework.util.StringUtil;
 
 import java.lang.reflect.Method;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
@@ -22,7 +21,16 @@ public class ActionHelper {
     static {
         List<Class<?>> actionClassList = ClassHelper.getClassListByAnnotation(Action.class);
         if (CollectionUtil.isNotEmpty(actionClassList)) {
-
+            Map<RequestMessage, Handler> commonActionMap = new HashMap<>();
+            Map<RequestMessage, Handler> regexpActionMap = new HashMap<>();
+            actionClassList.forEach(cls -> {
+                Method[] methods = cls.getMethods();
+                if (ArrayUtil.isNotEmpty(methods)) {
+                    Arrays.asList(methods).forEach(method -> handlerActionMethod(cls, method, commonActionMap, regexpActionMap));
+                }
+            });
+            actionMap.putAll(commonActionMap);
+            actionMap.putAll(regexpActionMap);
         }
 
     }
