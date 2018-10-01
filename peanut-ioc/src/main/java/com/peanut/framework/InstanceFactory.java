@@ -80,7 +80,7 @@ public class InstanceFactory {
      * 获取 HandlerMapping
      */
     public static HandlerMapping getHandlerMapping() {
-        return getInstance(HANDLER_MAPPING, DafaultHandlerMapping.class);
+        return getInstance(HANDLER_MAPPING, DefaultHandlerMapping.class);
     }
 
     /**
