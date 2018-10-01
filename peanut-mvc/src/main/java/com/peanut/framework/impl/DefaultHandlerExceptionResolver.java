@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 下午11:44 2018/7/25
- * @desc
+ * @desc 默认handler异常解析器
  */
 public class DefaultHandlerExceptionResolver implements HandlerExceptionResolver {
     @Override
