@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 下午5:37 2018/9/30
- * @desc
+ * @desc web操作工具类
  */
 public class WebUtil {
 

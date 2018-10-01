@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 下午11:42 2018/7/25
- * @desc
+ * @desc 默认视图解析器
  */
 public class DefaultViewResolver implements ViewResolver {
 
