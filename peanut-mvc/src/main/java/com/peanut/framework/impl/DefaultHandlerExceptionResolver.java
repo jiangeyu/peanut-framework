@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * @desc 默认handler异常解析器
  */
 public class DefaultHandlerExceptionResolver implements HandlerExceptionResolver {
+
     @Override
     public void resolveHandlerException(HttpServletRequest request, HttpServletResponse response) {
 
