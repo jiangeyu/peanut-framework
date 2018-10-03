@@ -1,10 +1,12 @@
 package com.peanut.framework.util;
 
+import com.peanut.framework.FrameworkConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -18,10 +20,19 @@ public class WebUtil {
     private static final Logger logger = LoggerFactory.getLogger(WebUtil.class);
 
     public static void writeJSON(HttpServletResponse response, Object data) {
-
+        try {
+            response.setContentType("application/json");
+            response.setCharacterEncoding(FrameworkConstant.UTF_8);
+            PrintWriter printWriter = response.getWriter();
+            printWriter.write(JsonUtil.toJSON(data));
+            printWriter.flush();
+            printWriter.close();
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
     }
 
-    public static void writeHTML(HttpServletResponse response,Object data) {
+    public static void writeHTML(HttpServletResponse response, Object data) {
 
     }
 
