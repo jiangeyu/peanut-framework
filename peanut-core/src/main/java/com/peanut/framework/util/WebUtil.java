@@ -33,6 +33,18 @@ public class WebUtil {
     }
 
     public static void writeHTML(HttpServletResponse response, Object data) {
+        try {
+            response.setContentType("application/json");
+            logger.info("write html");
+            response.setCharacterEncoding(FrameworkConstant.UTF_8);
+            PrintWriter printWriter = response.getWriter();
+            printWriter.write(JsonUtil.toJSON(data));
+            printWriter.flush();
+            printWriter.close();
+        } catch (Exception e) {
+            logger.error("write html error");
+            throw new RuntimeException();
+        }
 
     }
 
