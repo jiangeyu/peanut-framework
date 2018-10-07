@@ -50,7 +50,15 @@ public class WebUtil {
 
     public static Map<String, Object> getRequestParamMap(HttpServletRequest request) {
         Map<String, Object> map = new LinkedHashMap<>();
+        try {
+            String method = request.getMethod();
+            if(method.equalsIgnoreCase("put") || method.equalsIgnoreCase("delete")) {
 
+            }
+        } catch (Exception e) {
+            logger.error("获取请求参数出错");
+            throw new RuntimeException(e);
+        }
 
         return map;
     }
