@@ -52,8 +52,11 @@ public class WebUtil {
         Map<String, Object> map = new LinkedHashMap<>();
         try {
             String method = request.getMethod();
-            if(method.equalsIgnoreCase("put") || method.equalsIgnoreCase("delete")) {
-//String queryString = CodecUtil.decodeURL()
+            if (method.equalsIgnoreCase("put") || method.equalsIgnoreCase("delete")) {
+                String queryString = CodecUtil.decodeURL(StreamUtil.getString(request.getInputStream()));
+                if(StringUtil.isNotEmpty(queryString)) {
+                    String[] qsArray = StringUtil.splitString(queryString, "&");
+                }
             }
         } catch (Exception e) {
             logger.error("获取请求参数出错");
