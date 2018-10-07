@@ -53,7 +53,7 @@ public class WebUtil {
         try {
             String method = request.getMethod();
             if(method.equalsIgnoreCase("put") || method.equalsIgnoreCase("delete")) {
-
+//String queryString = CodecUtil.decodeURL()
             }
         } catch (Exception e) {
             logger.error("获取请求参数出错");
