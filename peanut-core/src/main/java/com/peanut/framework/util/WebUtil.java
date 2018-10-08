@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
@@ -263,13 +264,14 @@ public class WebUtil {
              * 创建随机数生成器
              */
             Random random = new Random();
-            for (int i = 0; i < 160; i++) {
+            IntStream.range(0, 160).forEach(i -> {
                 int x = random.nextInt(width);
                 int y = random.nextInt(height);
                 int xl = random.nextInt(12);
                 int yl = random.nextInt(12);
                 g.drawLine(x, y, x + xl, y + yl);
-            }
+            });
+
             /**
              * 生成随机验证码
              */
