@@ -201,31 +201,67 @@ public class WebUtil {
     public static String createCaptcha(HttpServletResponse response) {
         StringBuilder captcha = new StringBuilder();
         try {
-            // 参数初始化
-            int width = 60;                      // 验证码图片的宽度
-            int height = 25;                     // 验证码图片的高度
-            int codeCount = 4;                   // 验证码字符个数
-            int codeX = width / (codeCount + 1); // 字符横向间距
-            int codeY = height - 4;              // 字符纵向间距
-            int fontHeight = height - 2;         // 字体高度
-            int randomSeed = 10;                 // 随机数种子
-            char[] codeSequence = {              // 验证码中可出现的字符
+
+            /**
+             * 参数初始化,验证码图片的宽度
+             */
+            int width = 60;
+            /**
+             * 验证码图片的高度
+             */
+            int height = 25;
+            /**
+             * 验证码字符个数
+             */
+            int codeCount = 4;
+            /**
+             * 字符横向间距
+             */
+            int codeX = width / (codeCount + 1);
+            /**
+             * 字符纵向间距
+             */
+            int codeY = height - 4;
+            /**
+             * 字体高度
+             */
+            int fontHeight = height - 2;
+            /**
+             * 随机数种子
+             */
+            int randomSeed = 10;
+            /**
+             * 验证码中可出现的字符
+             */
+            char[] codeSequence = {
                     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
             };
-            // 创建图像
+            /**
+             * 创建图像
+             */
             BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = bi.createGraphics();
-            // 将图像填充为白色
+            /**
+             * 将图像填充为白色
+             */
             g.setColor(Color.WHITE);
             g.fillRect(0, 0, width, height);
-            // 设置字体
+            /**
+             * 设置字体
+             */
             g.setFont(new Font("Courier New", Font.BOLD, fontHeight));
-            // 绘制边框
+            /**
+             * 绘制边框
+             */
             g.setColor(Color.BLACK);
             g.drawRect(0, 0, width - 1, height - 1);
-            // 产生随机干扰线（160条）
+            /**
+             * 产生随机干扰线（160条）
+             */
             g.setColor(Color.WHITE);
-            // 创建随机数生成器
+            /**
+             * 创建随机数生成器
+             */
             Random random = new Random();
             for (int i = 0; i < 160; i++) {
                 int x = random.nextInt(width);
@@ -234,28 +270,47 @@ public class WebUtil {
                 int yl = random.nextInt(12);
                 g.drawLine(x, y, x + xl, y + yl);
             }
-            // 生成随机验证码
+            /**
+             * 生成随机验证码
+             */
             int red, green, blue;
             for (int i = 0; i < codeCount; i++) {
-                // 获取随机验证码
+
+                /**
+                 * 获取随机验证码
+                 */
                 String validateCode = String.valueOf(codeSequence[random.nextInt(randomSeed)]);
-                // 随机构造颜色值
+
+                /**
+                 * 随机构造颜色值
+                 */
                 red = random.nextInt(255);
                 green = random.nextInt(255);
                 blue = random.nextInt(255);
-                // 将带有颜色的验证码绘制到图像中
+                /**
+                 * 将带有颜色的验证码绘制到图像中
+                 */
                 g.setColor(new Color(red, green, blue));
                 g.drawString(validateCode, (i + 1) * codeX - 6, codeY);
-                // 将产生的随机数拼接起来
+                /**
+                 * 将产生的随机数拼接起来
+                 */
                 captcha.append(validateCode);
             }
-            // 禁止图像缓存
+            /**
+             * 禁止图像缓存
+             */
             response.setHeader("Cache-Control", "no-store");
             response.setHeader("Pragma", "no-cache");
             response.setDateHeader("Expires", 0);
-            // 设置响应类型为 JPEG 图片
+            /**
+             * 设置响应类型为 JPEG 图片
+             */
             response.setContentType("image/jpeg");
-            // 将缓冲图像写到 Servlet 输出流中
+
+            /**
+             * 将缓冲图像写到 Servlet 输出流中
+             */
             ServletOutputStream sos = response.getOutputStream();
             ImageIO.write(bi, "jpeg", sos);
             sos.close();
