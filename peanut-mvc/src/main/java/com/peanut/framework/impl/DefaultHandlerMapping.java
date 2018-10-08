@@ -48,6 +48,7 @@ public class DefaultHandlerMapping implements HandlerMapping {
             }
             return handler;
         }).findAny();
+        logger.info("get handler success");
         return optional.get();
     }
 }
