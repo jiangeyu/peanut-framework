@@ -72,7 +72,7 @@ public class ClassUtil {
      * @param type
      * @return
      */
-    public boolean isInt(Class<?> type) {
+    public static boolean isInt(Class<?> type) {
         return type.equals(int.class) || type.equals(Integer.class);
     }
 
@@ -82,7 +82,7 @@ public class ClassUtil {
      * @param type
      * @return
      */
-    public boolean isLong(Class<?> type) {
+    public static boolean isLong(Class<?> type) {
         return type.equals(long.class) || type.equals(Long.class);
     }
 
@@ -92,7 +92,7 @@ public class ClassUtil {
      * @param type
      * @return
      */
-    public boolean isDouble(Class<?> type) {
+    public static boolean isDouble(Class<?> type) {
         return type.equals(double.class) || type.equals(Double.class);
     }
 
@@ -102,7 +102,7 @@ public class ClassUtil {
      * @param type
      * @return
      */
-    public boolean isString(Class<?> type) {
+    public static boolean isString(Class<?> type) {
         return type.equals(String.class);
     }
 
