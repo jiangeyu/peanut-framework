@@ -2,11 +2,10 @@ package com.peanut.framework;
 
 import com.peanut.framework.annotation.Aspect;
 import com.peanut.framework.annotation.AspectOrder;
+import com.peanut.framework.annotation.Service;
 import com.peanut.framework.fault.InitializationError;
 import com.peanut.framework.proxy.Proxy;
 import com.peanut.framework.proxy.ProxyManager;
-import com.peanut.framework.tx.TransactionProxy;
-import com.peanut.framework.annotation.Service;
 import com.peanut.framework.util.ClassUtil;
 import com.peanut.framework.util.StringUtil;
 

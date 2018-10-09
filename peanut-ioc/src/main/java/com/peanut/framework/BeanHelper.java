@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class BeanHelper {
 
-    private static final Map<Class<?>, Object> beanMap = new HashMap<Class<?>, Object>(16);
+    private static final Map<Class<?>, Object> beanMap = new HashMap<>(16);
 
 
     static {
