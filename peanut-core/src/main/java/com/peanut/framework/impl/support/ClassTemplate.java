@@ -67,6 +67,7 @@ public abstract class ClassTemplate {
     private void addClass(List<Class<?>> classList, String packagePath, String packageName) {
         try {
             File[] files = new File(packagePath).listFiles(new FileFilter() {
+                @Override
                 public boolean accept(File file) {
                     return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
                 }

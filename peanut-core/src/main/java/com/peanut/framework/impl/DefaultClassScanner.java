@@ -1,7 +1,7 @@
 package com.peanut.framework.impl;
 
 import com.peanut.framework.ClassScanner;
-import com.peanut.framework.impl.support.AnnotationClassTmplate;
+import com.peanut.framework.impl.support.AnnotationClassTemplate;
 import com.peanut.framework.impl.support.ClassTemplate;
 import com.peanut.framework.impl.support.SuperClassTemplate;
 
@@ -30,7 +30,7 @@ public class DefaultClassScanner implements ClassScanner {
 
     @Override
     public List<Class<?>> getClassListByAnnotation(String packageName, Class<? extends Annotation> annotationClass) {
-        return new AnnotationClassTmplate(packageName, annotationClass) {
+        return new AnnotationClassTemplate(packageName, annotationClass) {
 
             @Override
             public boolean checkAddClass(Class<?> cls) {
