@@ -10,5 +10,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface ViewResolver {
 
+    /**
+     * 视图解析
+     *
+     * @param request
+     * @param response
+     * @param actionMethodResult
+     */
     void resolveView(HttpServletRequest request, HttpServletResponse response, Object actionMethodResult);
 }
