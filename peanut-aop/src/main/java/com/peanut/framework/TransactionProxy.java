@@ -4,7 +4,7 @@ package com.peanut.framework;
 import com.peanut.framework.dao.DatabaseHelper;
 import com.peanut.framework.proxy.Proxy;
 import com.peanut.framework.proxy.ProxyChain;
-import com.peanut.framework.tx.annotation.Transaction;
+import com.peanut.framework.annotation.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

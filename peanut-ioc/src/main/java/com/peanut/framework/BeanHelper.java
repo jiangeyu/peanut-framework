@@ -2,7 +2,7 @@ package com.peanut.framework;
 
 import com.peanut.framework.annotation.Aspect;
 import com.peanut.framework.annotation.Bean;
-import com.peanut.framework.tx.annotation.Service;
+import com.peanut.framework.annotation.Service;
 
 import java.util.HashMap;
 import java.util.List;
