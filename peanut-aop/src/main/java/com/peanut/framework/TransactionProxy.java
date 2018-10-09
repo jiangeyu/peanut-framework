@@ -1,10 +1,10 @@
 package com.peanut.framework;
 
 
+import com.peanut.framework.annotation.Transaction;
 import com.peanut.framework.dao.DatabaseHelper;
 import com.peanut.framework.proxy.Proxy;
 import com.peanut.framework.proxy.ProxyChain;
-import com.peanut.framework.annotation.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  */
 public class TransactionProxy implements Proxy {
 
-    private static final Logger logger = LoggerFactory.getLogger(TransactionProxy.class);
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final ThreadLocal<Boolean> flagContainer = ThreadLocal.withInitial(() -> false);
 
@@ -27,7 +27,7 @@ public class TransactionProxy implements Proxy {
         Object result = null;
         boolean flag = flagContainer.get();
         Method method = proxyChain.getTargetMethod();
-        if(!flag && method.isAnnotationPresent(Transaction.class)) {
+        if (!flag && method.isAnnotationPresent(Transaction.class)) {
             flagContainer.set(true);
             try {
                 DatabaseHelper.startTransaction();
