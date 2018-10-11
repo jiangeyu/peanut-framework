@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class InstanceFactory {
 
-    private static final Map<String, Object> cache = new ConcurrentHashMap<>(1024);
+    private static final Map<String, Object> cache = new ConcurrentHashMap<>(64);
 
     /**
      * ClassScanner

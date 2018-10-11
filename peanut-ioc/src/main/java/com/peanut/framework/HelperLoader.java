@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 下午4:10 2018/9/29
- * @desc
+ * @desc  peanut framework核心类加载器
  */
 public final class HelperLoader {
 

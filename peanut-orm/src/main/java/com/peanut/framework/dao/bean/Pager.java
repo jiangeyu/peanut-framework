@@ -1,6 +1,8 @@
 package com.peanut.framework.dao.bean;
 
 import com.peanut.framework.bean.BaseBean;
+import lombok.Builder;
+import lombok.Data;
 
 import java.util.List;
 
@@ -9,6 +11,8 @@ import java.util.List;
  * @time: Created in 下午11:14 2018/7/25
  * @desc
  */
+@Builder
+@Data
 public class Pager<T> extends BaseBean {
 
     private int pageNumber;

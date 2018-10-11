@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.net.JarURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -66,12 +65,7 @@ public abstract class ClassTemplate {
 
     private void addClass(List<Class<?>> classList, String packagePath, String packageName) {
         try {
-            File[] files = new File(packagePath).listFiles(new FileFilter() {
-                @Override
-                public boolean accept(File file) {
-                    return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
-                }
-            });
+            File[] files = new File(packagePath).listFiles(file -> (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory());
             for (File file : files) {
                 String fileName = file.getName();
                 if (file.isFile()) {

@@ -16,12 +16,12 @@ import java.io.IOException;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 上午10:19 2018/9/30
- * @desc 前端控制器
+ * @desc 前端控制器,请求转发
  */
 @WebServlet(urlPatterns = "/*", loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet {
 
-    private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private HandlerMapping handlerMapping = InstanceFactory.getHandlerMapping();
 
