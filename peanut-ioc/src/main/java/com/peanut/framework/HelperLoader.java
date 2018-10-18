@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author: <a href="mailto:lingxiao@2dfire.com">凌霄</a>
  * @time: Created in 下午4:10 2018/9/29
- * @desc  peanut framework核心类加载器
+ * @desc peanut framework核心类加载器
  */
 public final class HelperLoader {
 
@@ -20,8 +20,15 @@ public final class HelperLoader {
      */
     public static void init() {
 
-        List<Class> classList = Arrays.asList(new Class[]{DatabaseHelper.class, EntityHelper.class, ActionHelper.class,
-                BeanHelper.class, AopHelper.class, IocHelper.class, PluginHelper.class});
+        List<Class> classList = Arrays.asList(new Class[]{
+                DatabaseHelper.class,
+                EntityHelper.class,
+                ActionHelper.class,
+                BeanHelper.class,
+                AopHelper.class,
+                IocHelper.class,
+                PluginHelper.class
+        });
 
         classList.stream().forEach(cls -> ClassUtil.loadClass(cls.getName()));
     }
